@@ -27,15 +27,23 @@ self.addEventListener('install', function(event) {
               .then(function(res) {
                 return caches.open('first-app')
                   .then(function(cache) {
+                    return fetch(event.request)
+                    .then(function(res){
+
                     cache.put(event.request.url, res.clone());
                     return res;
                   })
               })
+            })
               .catch(function(err) {
                 return caches.open('first-app')
                   .then(function(cache) {
+                    return fetch(event.request)
+                    .then(function(res){
+
                     cache.put(event.request.url, res.clone());
                     return res;
+                  })
                   });
               });
           }
