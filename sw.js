@@ -8,7 +8,7 @@ self.addEventListener('install', function(event) {
             'blog.html',
             'about.html',
             'contact.html',
-            'portofolio-example01.html',
+            'portoflio-example01.html',
             'uts.css',
             'uts.js'
           ])
