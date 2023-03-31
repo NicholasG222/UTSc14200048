@@ -26,9 +26,13 @@ self.addEventListener('install', function(event) {
               return res;
             });
         }).catch(function(err) {
-            return caches.open(CACHE_STATIC_NAME)
+            return caches.open('first-app')
               .then(function(cache) {
-                return cache.match('/offline.html');
+                return fetch(event.request)
+                .then(function(res) {
+                    cache.put(event.request, res.clone());
+                    return res;
+                  })
               });
             }));
 
